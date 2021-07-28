@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\Kang\Documents\Project\algorithm-practice\venv"
+VIRTUAL_ENV="C:\Users\requi\git-storage\algorithm-practice\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
