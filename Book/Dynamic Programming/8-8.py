@@ -14,4 +14,3 @@ for i in range(1, n+1):
     if i % money[0] == 0:
         d[i] = i//money[0]
     else:
-        
