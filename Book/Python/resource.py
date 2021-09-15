@@ -103,3 +103,14 @@
 #
 
 #
+# copy list
+# list1 = list2.copy()
+#
+
+#
+# for variable by list slicing
+# for x in data[1: -1]:
+#     indegree[i] += 1
+#     graph[x].append(i)
+#
+
