@@ -1,4 +1,4 @@
-#until 1
+# until 1
 
 n, k = map(int, input().split())
 count = 0
