@@ -114,3 +114,6 @@
 #     graph[x].append(i)
 #
 
+#
+# list slicing
+# a[start:end:step]

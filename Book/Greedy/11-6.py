@@ -24,4 +24,14 @@ def solution(food_times, k):
 #     answer = sorted(q, key = lambda x : x[1])
 
 #     return answer[(k - sum_value) % length][1]
+    answer = 0
+    cpy = food_times.copy()
 
+
+
+
+
+    return answer
+
+
+print(solution([3, 1, 2], 5))
