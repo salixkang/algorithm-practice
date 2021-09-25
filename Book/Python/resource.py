@@ -108,6 +108,11 @@
 #
 
 #
+# delete element
+# array.remove(a)'
+#
+
+#
 # for variable by list slicing
 # for x in data[1: -1]:
 #     indegree[i] += 1
@@ -117,3 +122,11 @@
 #
 # list slicing
 # a[start:end:step]
+#
+
+#
+# list sorting
+# from operator import itemgetter, attrgetter
+# answer = sorted(answer, key = itemgetter(0, 1, 2))
+#
+
