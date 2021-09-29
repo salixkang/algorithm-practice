@@ -130,3 +130,20 @@
 # answer = sorted(answer, key = itemgetter(0, 1, 2))
 #
 
+#
+# abs
+# abs(-99) = 99
+#
+
+#
+# deque
+# from collections import deque
+# lst = deque()
+#
+
+#
+# heapq
+# import heapq
+# heap = []
+# heapq.heappush(heap, 1)
+#
