@@ -41,8 +41,8 @@ def solution(n, weak, dist):
     for start in range(length):
         for friends in list(permutations(dist, len(dist))):
             count = 1
-            position = weak[start] + friends[count - 1]
-            for index in range(start, start + length):
+            position = weak[start] + friends[count - 1] # 
+            for index in range(start, start + length): # 3
                 if position < weak[index]:
                     count += 1
                     if count > len(dist):
