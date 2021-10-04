@@ -147,3 +147,7 @@
 # heap = []
 # heapq.heappush(heap, 1)
 #
+
+#
+# stack
+#
