@@ -149,5 +149,7 @@
 #
 
 #
-# stack
+# itertools
+# import itertools
+# for i in list(itertools.permutations(array, 3)):
 #
