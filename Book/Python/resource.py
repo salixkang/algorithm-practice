@@ -40,6 +40,11 @@
 #
 
 #
+# list input(with string, integer)
+# lst = list(input().split())
+#
+
+#
 # quick input
 # import sys
 # input_data = sys.stdin.readline().rstrip()

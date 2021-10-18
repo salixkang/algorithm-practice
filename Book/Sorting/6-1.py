@@ -9,5 +9,5 @@ for i in range(len(array)):
             min_index = j
     array[i], array[min_index] = array[min_index], array[i]
 
-print(array)
+
 
