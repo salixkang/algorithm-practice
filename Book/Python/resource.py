@@ -158,3 +158,10 @@
 # import itertools
 # for i in list(itertools.permutations(array, 3)):
 #
+
+#
+# bisect
+# from bisect import bisect_left, bisect_right
+# lst = [1, 2, 3]
+# a = bisect_left(lst, 2)
+#

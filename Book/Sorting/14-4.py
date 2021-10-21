@@ -1,17 +1,25 @@
 # card sort
 # https://www.acmicpc.net/problem/1715
+import heapq
 
 n = int(input())
 cards = []
 for _ in range(n):
     cards.append(int(input()))
+heapq.heapify(cards)
 
-cards.sort()
+result = 0
+while len(cards) > 2:
+    a = heapq.heappop(cards)
+    b = heapq.heappop(cards)
+    tray = a + b
+    result += tray
+    heapq.heappush(cards, tray)
 
-result = 3e9
-compare = [cards[0]]
-temp = 0
-for idx, card in enumerate(cards[1::]):
-    for e in compare:
-        if e <= card:
-            
+if n != 1:
+    result += cards[0] + cards[1]
+else:
+    result = cards[0]
+print(result)
+
+
