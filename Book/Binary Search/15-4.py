@@ -5,58 +5,74 @@ from bisect import bisect_left, bisect_right
 
 
 def solution(words, queries):
-    d = []
+    d = {}
+    f = {}
+    b = {}
     answer = []
     words.sort()
     for query in queries:
-        if query[0] == '?':
-            res = back_query(query, words)
-            answer.append(res)
+        if query not in d:
+            if query[0] == '?':
+                res = back_query(query, words, b)
+                answer.append(res)
+                d[query] = res
+            else:
+                res = front_query(query, words, f)
+                answer.append(res)
+                d[query] = res
         else:
-            res = front_query(query, words)
-            answer.append(res)
+            answer.append(d[query])
 
     return answer
 
 
-def front_query(query, words):
+def front_query(query, words, f):
     temp = list(filter(lambda val: val != '?', query))
-    print(temp)
-    # for i in query:
-    #     if i != '?':
-    #         temp.append(i)
-    #     else:
-    #         break
+    str_temp = "".join(temp)
+    if str_temp not in f:
+        start = "".join(temp)
+        temp[-1] = chr(ord(temp[-1]) + 1)
+        end = "".join(temp)
 
+        inter = words[bisect_left(words, start):bisect_left(words, end)]
+        f[str_temp] = inter
+        res = length(query, inter)
+    else:
+        res = length(query, f[str_temp])
+    return len(res)
+
+
+def back_query(query, words, b):
+    temp = list(filter(lambda val: val != '?', query))
+    if not temp:
+        return len(length(query, words))
+    if len(query) not in b:
+        words_len = length(query, words)
+        for idx, word in enumerate(words_len):
+            words_len[idx] = word[::-1]
+        words_len.sort()
+        b[len(query)] = words_len
+    else:
+        words_len = b[len(query)]
+
+    temp = temp[::-1]
     start = "".join(temp)
     temp[-1] = chr(ord(temp[-1]) + 1)
     end = "".join(temp)
 
-    inter = words[bisect_left(words, start):bisect_left(words, end)]
-    res = length(query, inter)
-
-    return res
-
-
-def back_query(query, words):
-    temp = list(filter(lambda val: val != '?', query))
-    if not temp:
-        return length(query, words)
-    len_q = len(words) - len(temp)
-
-    return 0
+    return bisect_left(words_len, end) - bisect_left(words_len, start)
 
 
 def length(query, words):
-    words.sort(key=len)
+    words_len = sorted(words, key=len)
     len_query = len(query)
     start = 0
-    end = len(words)
+    end = len(words_len)
     left = start
     right = end
     while start < end:
         mid = (start + end) // 2
-        if len(words[mid]) < len_query:
+        if len(words_len[mid]) < len_query:
             start = mid + 1
         else:
             end = mid
@@ -64,15 +80,15 @@ def length(query, words):
     left = start
 
     start = 0
-    end = len(words)
+    end = len(words_len)
 
     while start < end:
         mid = (start + end) // 2
-        if len(words[mid]) > len_query:
+        if len(words_len[mid]) > len_query:
             end = mid
         else:
             start = mid + 1
 
     right = start
 
-    return len(words[left:right])
+    return words_len[left:right]
