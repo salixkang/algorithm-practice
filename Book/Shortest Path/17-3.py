@@ -1,9 +1,33 @@
 # mars
 
+import heapq
+
+
+def dijkstra(start, n, space):
+    q = []
+    heapq.heappush(q, (space[0][0], start))
+    dp = [[1e9] * n for _ in range(n)]
+    while q:
+        cost, (x, y) = heapq.heappop(q)
+        if dp[x][y] < cost:
+            continue
+        for i in range(4):
+            next_x = x + dx[i]
+            next_y = y + dy[i]
+            if 0 <= next_x < n and 0 <= next_y < n:
+                next_cost = cost + space[next_x][next_y]
+                if next_cost < dp[next_x][next_y]:
+                    dp[next_x][next_y] = next_cost
+                    heapq.heappush(q, (next_cost, (next_x, next_y)))
+
+    return dp[n - 1][n - 1]
+
 t = int(input())
 
 test = [[] for _ in range(t)]
 
+dx = [1, 0, -1, 0]
+dy = [0, 1, 0, -1]
 for i in range(t):
     test[i].append(int(input()))
     n = test[i][0]
@@ -13,6 +37,17 @@ for i in range(t):
 
     test[i].append(cost)
 
+for i in range(t):
+    n = test[i][0]
+    space = test[i][1]
+    start = (0, 0)
+    result = dijkstra(start, n, space)
+
+
+
+
+
+    print(result)
 
 
 
