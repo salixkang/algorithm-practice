@@ -32,9 +32,6 @@ result = 0
 
 while road:
     z, (x, y) = heapq.heappop(road)
-    if sum(parent) == n:
-        result += z
-        continue
     if find_parent(parent, x) == find_parent(parent, y):
         result += z
         continue
